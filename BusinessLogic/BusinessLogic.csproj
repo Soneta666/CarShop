@@ -10,7 +10,7 @@
   <ItemGroup>
     <Folder Include="Interfaces\" />
     <Folder Include="DTOs\" />
-    <Folder Include="Validators\" />
+    <Folder Include="MapperProfiles\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
