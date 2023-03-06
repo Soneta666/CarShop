@@ -11,6 +11,7 @@
     <Folder Include="Interfaces\" />
     <Folder Include="DTOs\" />
     <Folder Include="MapperProfiles\" />
+    <Folder Include="Entities\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
