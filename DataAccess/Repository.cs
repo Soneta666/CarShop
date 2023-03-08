@@ -1,15 +1,11 @@
-﻿using DataAccess.Interfaces;
+﻿using Ardalis.Specification.EntityFrameworkCore;
+using Ardalis.Specification;
+using Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DataAccess
+namespace Infrastructure
 {
-    public class Repository<TEntity> : IRepository<TEntity> where TEntity : class
+    internal class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
         internal ShopDbContext context;
         internal DbSet<TEntity> dbSet;
@@ -20,67 +16,69 @@ namespace DataAccess
             this.dbSet = context.Set<TEntity>();
         }
 
-        public void Save()
+        public async Task Save()
         {
-            context.SaveChanges();
+            await context.SaveChangesAsync();
         }
 
-        public virtual IEnumerable<TEntity> Get(
-            Expression<Func<TEntity, bool>> filter = null,
-            Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null,
-            params string[] includeProperties)
+        public async virtual Task<IEnumerable<TEntity>> GetAll()
         {
-            IQueryable<TEntity> query = dbSet;
+            return await dbSet.ToListAsync();
+        }
 
-            if (filter != null)
+        public async virtual Task<TEntity?> GetById(object id)
+        {
+            return await dbSet.FindAsync(id);
+        }
+
+        public async virtual Task Insert(TEntity entity)
+        {
+            await dbSet.AddAsync(entity);
+        }
+
+        public async virtual Task Delete(object id)
+        {
+            TEntity? entityToDelete = await dbSet.FindAsync(id);
+            if (entityToDelete != null)
+                await Delete(entityToDelete);
+        }
+
+        public virtual Task Delete(TEntity entityToDelete)
+        {
+            return Task.Run(() =>
             {
-                query = query.Where(filter);
-            }
+                if (context.Entry(entityToDelete).State == EntityState.Detached)
+                {
+                    dbSet.Attach(entityToDelete);
+                }
+                dbSet.Remove(entityToDelete);
+            });
+        }
 
-            foreach (var includeProperty in includeProperties)
+        public virtual Task Update(TEntity entityToUpdate)
+        {
+            return Task.Run(() =>
             {
-                query = query.Include(includeProperty);
-            }
-
-            if (orderBy != null)
-            {
-                return orderBy(query).ToList();
-            }
-            else
-            {
-                return query.ToList();
-            }
+                dbSet.Attach(entityToUpdate);
+                context.Entry(entityToUpdate).State = EntityState.Modified;
+            });
         }
 
-        public virtual TEntity GetByID(object id)
+        // working with specifications
+        public async Task<IEnumerable<TEntity>> GetListBySpec(ISpecification<TEntity> specification)
         {
-            return dbSet.Find(id);
+            return await ApplySpecification(specification).ToListAsync();
         }
 
-        public virtual void Insert(TEntity entity)
+        public async Task<TEntity?> GetItemBySpec(ISpecification<TEntity> specification)
         {
-            dbSet.Add(entity);
+            return await ApplySpecification(specification).FirstOrDefaultAsync();
         }
 
-        public virtual void Delete(object id)
+        private IQueryable<TEntity> ApplySpecification(ISpecification<TEntity> specification)
         {
-            TEntity entityToDelete = dbSet.Find(id);
-            Delete(entityToDelete);
-        }
-
-        public virtual void Delete(TEntity entityToDelete)
-        {
-            if (context.Entry(entityToDelete).State == EntityState.Detached)
-            {
-                dbSet.Attach(entityToDelete);
-            }
-            dbSet.Remove(entityToDelete);
-        }
-
-        public virtual void Update(TEntity entityToUpdate)
-        {
-            dbSet.Attach(entityToUpdate);
-            context.Entry(entityToUpdate).State = EntityState.Modified;
+            var evaluator = new SpecificationEvaluator();
+            return evaluator.GetQuery(dbSet, specification);
         }
     }
 }
