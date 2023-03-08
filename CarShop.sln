@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarShop", "CarShop\CarShop.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "BusinessLogic\Core.csproj", "{478B3F9F-A999-400F-BCF0-87C6E0B1EC49}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastucture", "DataAccess\Infrastucture.csproj", "{25F52524-8F56-4A3B-9BAF-390991D010E1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "DataAccess\Infrastructure.csproj", "{25F52524-8F56-4A3B-9BAF-390991D010E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
