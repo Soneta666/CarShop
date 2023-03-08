@@ -7,5 +7,6 @@
         public string Name { get; set; }
         public string Description { get; set; }
         public Year Year { get; set; }
+        public ICollection<Car> Cars { get; set; }
     }
 }

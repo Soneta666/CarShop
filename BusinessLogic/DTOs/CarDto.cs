@@ -16,8 +16,8 @@ namespace Core.DTOs
         public double Mileage { get; set; }      // Пробег
         public double MaxSpeed { get; set; }     // Скорость
         public double SecondSpeed { get; set; }  // Скорость за 1 секунду
-        public MakeDto Make { get; set; }
-        public ModelDto Model { get; set; }
-        public EngineDto Engine { get; set; }
+        public MakeDto? Make { get; set; }
+        public ModelDto? Model { get; set; }
+        public EngineDto? Engine { get; set; }
     }
 }

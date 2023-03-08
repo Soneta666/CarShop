@@ -10,5 +10,6 @@
         public double Weight { get; set; } // Вес двигателя
         public int FuelConsumption { get; set; } // Потребление 1 литра топлива на км
         public TypeEngine TypeEngine { get; set; }
+        public ICollection<Car> Cars { get; set; }
     }
 }
