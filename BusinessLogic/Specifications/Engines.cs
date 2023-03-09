@@ -11,6 +11,14 @@ namespace Core.Specifications
 {
     public static class Engines
     {
+        public class GetAll : Specification<Engine>
+        {
+            public GetAll()
+            {
+                Query
+                    .Include(e => e.TypeEngine);
+            }
+        }
         public class OrderedByVolume : Specification<Engine>
         {
             public OrderedByVolume()

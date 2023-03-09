@@ -11,6 +11,16 @@ namespace Core.Specifications
 {
     public static class Cars
     {
+        public class GetAll : Specification<Car>
+        {
+            public GetAll()
+            {
+                Query
+                    .Include(c => c.Model)
+                    .Include(c => c.Model)
+                    .Include(c => c.Engine);
+            }
+        }
         public class OrderedByModelName : Specification<Car>
         {
             public OrderedByModelName()

@@ -11,6 +11,14 @@ namespace Core.Specifications
 {
     public static class Models
     {
+        public class GetAll : Specification<Model>
+        {
+            public GetAll()
+            {
+                Query
+                    .Include(m => m.Year);
+            }
+        }
         public class OrderedByName : Specification<Model>
         {
             public OrderedByName()
