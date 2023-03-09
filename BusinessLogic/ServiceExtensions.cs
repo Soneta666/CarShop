@@ -1,4 +1,6 @@
-﻿using FluentValidation;
+﻿using Core.Interfaces;
+using Core.Services;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -18,6 +20,7 @@ namespace Core
 
         public static void AddCustomServices(this IServiceCollection services)
         {
+            services.AddScoped<ICarsService, CarsService>();
         }
         public static void AddValidators(this IServiceCollection services)
         {
