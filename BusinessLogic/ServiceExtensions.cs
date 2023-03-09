@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using FluentValidation.AspNetCore;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +18,11 @@ namespace Core
 
         public static void AddCustomServices(this IServiceCollection services)
         {
+        }
+        public static void AddValidators(this IServiceCollection services)
+        {
+            services.AddFluentValidationAutoValidation();
+            services.AddValidatorsFromAssemblies(AppDomain.CurrentDomain.GetAssemblies());
         }
     }
 }

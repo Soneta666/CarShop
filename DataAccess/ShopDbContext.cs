@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure
 {
-    public class ShopDbContext : DbContext
+    internal class ShopDbContext : DbContext
     {
         public ShopDbContext() : base() { }
         public ShopDbContext(DbContextOptions options) : base(options) { }

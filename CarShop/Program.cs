@@ -13,6 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddRepository();
 builder.Services.AddCustomServices();
 builder.Services.AddAutoMapper();
+builder.Services.AddValidators();
 
 var app = builder.Build();
 
