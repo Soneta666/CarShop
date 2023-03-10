@@ -8,7 +8,7 @@ namespace Core.DTOs
 {
     public class MakeDto
     {
-        public int id { get; set; }
+        public uint Id { get; set; }
         public string Name { get; set; }     // Название производителя
         public string Country { get; set; }  // Страна производителя
     }
