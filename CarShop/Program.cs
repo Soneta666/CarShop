@@ -1,5 +1,5 @@
 using Core;
-using Infrastructure;
+using Infrastructure.Data;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);

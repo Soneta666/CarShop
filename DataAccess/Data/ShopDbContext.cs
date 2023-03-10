@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Core.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Infrastructure
+namespace Infrastructure.Data
 {
     internal class ShopDbContext : DbContext
     {
@@ -25,5 +26,12 @@ namespace Infrastructure
             string connStr = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=CarsShop;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             optionsBuilder.UseSqlServer(connStr);
         }
+
+        public DbSet<Car> Cars { get; set; }
+        public DbSet<Engine> Engines { get; set; }
+        public DbSet<Make> Makes { get; set; }
+        public DbSet<Model> Models { get; set; }
+        public DbSet<TypeEngine> TypeEngines { get; set; }
+        public DbSet<Year> Years { get; set; }
     }
 }

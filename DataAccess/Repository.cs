@@ -2,6 +2,7 @@
 using Ardalis.Specification;
 using Core.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using Infrastructure.Data;
 
 namespace Infrastructure
 {
