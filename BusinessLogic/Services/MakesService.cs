@@ -1,11 +1,14 @@
 ﻿using AutoMapper;
 using Core.DTOs;
 using Core.Entities;
+using Core.Helpers;
 using Core.Interfaces;
+using Core.Resources;
 using Core.Specifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -40,7 +43,8 @@ namespace Core.Services
         {
             Make? item = await makesRepo.GetItemBySpec(new Makes.ById(id));
 
-            if (item == null) return null;
+            if (item == null)
+                throw new HttpException(ErrorMessages.MakeNotFound, HttpStatusCode.NotFound);
 
             return mapper.Map<MakeDto>(item);
         }
@@ -59,7 +63,8 @@ namespace Core.Services
 
         public async Task Delete(int id)
         {
-            if (await makesRepo.GetById(id) == null) return;
+            if (await makesRepo.GetById(id) == null)
+                throw new HttpException(ErrorMessages.MakeNotFound, HttpStatusCode.NotFound);
 
             await makesRepo.Delete(id);
             await makesRepo.Save();

@@ -56,7 +56,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("ModelId");
 
-                    b.ToTable("Car");
+                    b.ToTable("Cars");
                 });
 
             modelBuilder.Entity("Core.Entities.Engine", b =>
@@ -89,7 +89,7 @@ namespace Infrastructure.Migrations
 
                     b.HasIndex("TypeEngineId");
 
-                    b.ToTable("Engine");
+                    b.ToTable("Engines");
                 });
 
             modelBuilder.Entity("Core.Entities.Make", b =>
@@ -110,7 +110,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Make");
+                    b.ToTable("Makes");
                 });
 
             modelBuilder.Entity("Core.Entities.Model", b =>
@@ -132,14 +132,11 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("YearId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("YearId");
+                    b.HasIndex("IdYear");
 
-                    b.ToTable("Model");
+                    b.ToTable("Models");
                 });
 
             modelBuilder.Entity("Core.Entities.TypeEngine", b =>
@@ -160,7 +157,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("TypeEngine");
+                    b.ToTable("TypeEngines");
                 });
 
             modelBuilder.Entity("Core.Entities.Year", b =>
@@ -176,7 +173,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Year");
+                    b.ToTable("Years");
                 });
 
             modelBuilder.Entity("Core.Entities.Car", b =>
@@ -188,7 +185,7 @@ namespace Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("Core.Entities.Make", "Make")
-                        .WithMany("Car")
+                        .WithMany("Cars")
                         .HasForeignKey("MakeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -221,7 +218,7 @@ namespace Infrastructure.Migrations
                 {
                     b.HasOne("Core.Entities.Year", "Year")
                         .WithMany("Models")
-                        .HasForeignKey("YearId")
+                        .HasForeignKey("IdYear")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -235,7 +232,7 @@ namespace Infrastructure.Migrations
 
             modelBuilder.Entity("Core.Entities.Make", b =>
                 {
-                    b.Navigation("Car");
+                    b.Navigation("Cars");
                 });
 
             modelBuilder.Entity("Core.Entities.Model", b =>

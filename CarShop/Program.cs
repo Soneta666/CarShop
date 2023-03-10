@@ -1,3 +1,4 @@
+using CarShop;
 using Core;
 using Infrastructure.Data;
 using System.Text.Json.Serialization;
@@ -32,6 +33,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<ErrorHandlerMiddleware>();
 
 app.UseAuthorization();
 

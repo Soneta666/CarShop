@@ -10,7 +10,7 @@ namespace Infrastructure.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Make",
+                name: "Makes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -20,11 +20,11 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Make", x => x.Id);
+                    table.PrimaryKey("PK_Makes", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "TypeEngine",
+                name: "TypeEngines",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -34,11 +34,11 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TypeEngine", x => x.Id);
+                    table.PrimaryKey("PK_TypeEngines", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Year",
+                name: "Years",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -47,11 +47,11 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Year", x => x.Id);
+                    table.PrimaryKey("PK_Years", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Engine",
+                name: "Engines",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -65,39 +65,38 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Engine", x => x.Id);
+                    table.PrimaryKey("PK_Engines", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Engine_TypeEngine_TypeEngineId",
+                        name: "FK_Engines_TypeEngines_TypeEngineId",
                         column: x => x.TypeEngineId,
-                        principalTable: "TypeEngine",
+                        principalTable: "TypeEngines",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Model",
+                name: "Models",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdYear = table.Column<int>(type: "int", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    YearId = table.Column<int>(type: "int", nullable: false)
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Model", x => x.Id);
+                    table.PrimaryKey("PK_Models", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Model_Year_YearId",
-                        column: x => x.YearId,
-                        principalTable: "Year",
+                        name: "FK_Models_Years_IdYear",
+                        column: x => x.IdYear,
+                        principalTable: "Years",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Car",
+                name: "Cars",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -111,72 +110,72 @@ namespace Infrastructure.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Car", x => x.Id);
+                    table.PrimaryKey("PK_Cars", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Car_Engine_EngineId",
+                        name: "FK_Cars_Engines_EngineId",
                         column: x => x.EngineId,
-                        principalTable: "Engine",
+                        principalTable: "Engines",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Car_Make_MakeId",
+                        name: "FK_Cars_Makes_MakeId",
                         column: x => x.MakeId,
-                        principalTable: "Make",
+                        principalTable: "Makes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Car_Model_ModelId",
+                        name: "FK_Cars_Models_ModelId",
                         column: x => x.ModelId,
-                        principalTable: "Model",
+                        principalTable: "Models",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Car_EngineId",
-                table: "Car",
+                name: "IX_Cars_EngineId",
+                table: "Cars",
                 column: "EngineId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Car_MakeId",
-                table: "Car",
+                name: "IX_Cars_MakeId",
+                table: "Cars",
                 column: "MakeId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Car_ModelId",
-                table: "Car",
+                name: "IX_Cars_ModelId",
+                table: "Cars",
                 column: "ModelId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Engine_TypeEngineId",
-                table: "Engine",
+                name: "IX_Engines_TypeEngineId",
+                table: "Engines",
                 column: "TypeEngineId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Model_YearId",
-                table: "Model",
-                column: "YearId");
+                name: "IX_Models_IdYear",
+                table: "Models",
+                column: "IdYear");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Car");
+                name: "Cars");
 
             migrationBuilder.DropTable(
-                name: "Engine");
+                name: "Engines");
 
             migrationBuilder.DropTable(
-                name: "Make");
+                name: "Makes");
 
             migrationBuilder.DropTable(
-                name: "Model");
+                name: "Models");
 
             migrationBuilder.DropTable(
-                name: "TypeEngine");
+                name: "TypeEngines");
 
             migrationBuilder.DropTable(
-                name: "Year");
+                name: "Years");
         }
     }
 }
