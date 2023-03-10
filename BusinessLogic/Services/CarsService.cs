@@ -1,11 +1,14 @@
 ﻿using AutoMapper;
 using Core.DTOs;
 using Core.Entities;
+using Core.Helpers;
 using Core.Interfaces;
+using Core.Resources;
 using Core.Specifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -50,7 +53,8 @@ namespace Core.Services
         {
             Car? item = await carsRepo.GetItemBySpec(new Cars.ById(id));
 
-            if (item == null) return null;
+            if (item == null)
+                throw new HttpException(ErrorMessages.CarNotFound, HttpStatusCode.NotFound);
 
             return mapper.Map<CarDto>(item);
         }
@@ -69,7 +73,8 @@ namespace Core.Services
 
         public async Task Delete(int id)
         {
-            if (await carsRepo.GetById(id) == null) return; 
+            if (await carsRepo.GetById(id) == null)
+                throw new HttpException(ErrorMessages.CarNotFound, HttpStatusCode.NotFound);
 
             await carsRepo.Delete(id);
             await carsRepo.Save();

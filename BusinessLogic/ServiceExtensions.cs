@@ -22,6 +22,7 @@ namespace Core
         {
             services.AddScoped<ICarsService, CarsService>();
             services.AddScoped<IMakesService, MakesService>();
+            services.AddScoped<IModelsService, ModelsService>();
         }
         public static void AddValidators(this IServiceCollection services)
         {
