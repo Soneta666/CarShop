@@ -1,4 +1,6 @@
-﻿using Core.DTOs;
+﻿using AutoMapper;
+using Core.DTOs;
+using Core.Specifications;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,7 @@ namespace Core.Interfaces
     public interface ICarsService
     {
         Task<IEnumerable<CarDto>> GetAll();
+        Task<IEnumerable<CarDto>> GetOrder(string order);
         Task<CarDto?> GetById(int id);
         Task Create(CarDto car);
         Task Edit(CarDto car);

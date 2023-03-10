@@ -29,6 +29,23 @@ namespace Core.Services
             return mapper.Map<IEnumerable<CarDto>>(result);
         }
 
+        public async Task<IEnumerable<CarDto>> GetOrder(string order)
+        {
+            IEnumerable<Car> result;
+            if(order == "orderbycountry" || order == "country" || order == "bycountry") 
+                result = await moviesRepo.GetListBySpec(new Cars.OrderedByCountry());
+            else if(order == "orderbymakename" || order == "bymakename" || order == "makename") 
+                result = await moviesRepo.GetListBySpec(new Cars.OrderedByMakeName());
+            else if(order == "orderbymaxspeed" || order == "bymaxspeed" || order == "maxspeed") 
+                result = await moviesRepo.GetListBySpec(new Cars.OrderedByMaxSpeed());
+            else if(order == "orderbyyear" || order == "byyear" || order == "year") 
+                result = await moviesRepo.GetListBySpec(new Cars.OrderedByYear());
+            else
+                result = await moviesRepo.GetListBySpec(new Cars.OrderedByModelName());
+
+            return mapper.Map<IEnumerable<CarDto>>(result);
+        }
+
         public async Task<CarDto?> GetById(int id)
         {
             Car? item = await moviesRepo.GetItemBySpec(new Cars.ById(id));
