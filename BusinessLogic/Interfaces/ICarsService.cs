@@ -12,7 +12,7 @@ namespace Core.Interfaces
     public interface ICarsService
     {
         Task<IEnumerable<CarDto>> GetAll();
-        Task<IEnumerable<CarDto>> GetOrder(string order);
+        Task<IEnumerable<CarDto>> Order(string order);
         Task<CarDto?> GetById(int id);
         Task Create(CarDto car);
         Task Edit(CarDto car);

@@ -29,7 +29,7 @@ namespace Core.Services
             return mapper.Map<IEnumerable<CarDto>>(result);
         }
 
-        public async Task<IEnumerable<CarDto>> GetOrder(string order)
+        public async Task<IEnumerable<CarDto>> Order(string order)
         {
             IEnumerable<Car> result;
             if(order == "orderbycountry" || order == "country" || order == "bycountry") 

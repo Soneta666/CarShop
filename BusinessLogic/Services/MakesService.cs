@@ -29,7 +29,7 @@ namespace Core.Services
             return mapper.Map<IEnumerable<MakeDto>>(result);
         }
 
-        public async Task<IEnumerable<MakeDto>> GetOrder()
+        public async Task<IEnumerable<MakeDto>> Order()
         {
             var result = await makesRepo.GetListBySpec(new Makes.OrderedByName());
 

@@ -22,7 +22,7 @@ namespace CarShop.Controllers
             return Ok(await makesService.GetAll());
         }
 
-        [HttpGet("{id:int}")]
+        [HttpGet("{id}")]
         public async Task<IActionResult> Get([FromRoute] int id)
         {
             var item = await makesService.GetById(id);
@@ -31,10 +31,10 @@ namespace CarShop.Controllers
             return Ok(item);
         }
 
-        [HttpGet("{orderBy:alpha}")]
+        [HttpGet("order")]
         public async Task<IActionResult> GetOrder()
         {
-            var item = await makesService.GetOrder();
+            var item = await makesService.Order();
             if (item == null) return NotFound();
 
             return Ok(item);
