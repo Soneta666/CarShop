@@ -22,7 +22,7 @@ namespace CarShop.Controllers
             return Ok(await carsService.GetAll());
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> Get([FromRoute] int id)
         {
             var item = await carsService.GetById(id);
@@ -31,7 +31,7 @@ namespace CarShop.Controllers
             return Ok(item);
         }
 
-        [HttpGet("{orderBy}")]
+        [HttpGet("{orderBy:alpha}")]
         public async Task<IActionResult> GetOrder([FromRoute] string orderBy)
         {   
             if(orderBy.Split(' ').Length > 1)
@@ -40,7 +40,7 @@ namespace CarShop.Controllers
                 orderBy = "";
                 for (int i = 0; i < orderByStr.Length; i++)
                 {
-                    orderBy+=orderByStr[i];
+                    orderBy += orderByStr[i];
                 }
             }
             var item = await carsService.GetOrder(orderBy.ToLower());

@@ -1,4 +1,5 @@
 ﻿using Core.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -17,7 +18,7 @@ namespace Infrastructure
 
         public static void AddDbContext(this IServiceCollection services, string connStr)
         {
-            //services.AddDbContext<ShopDbContext>(opt => opt.UseSqlServer(connStr));
+            services.AddDbContext<ShopDbContext>(opt => opt.UseSqlServer(connStr));
         }
     }
 }
