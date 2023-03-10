@@ -21,6 +21,7 @@ namespace Core
         public static void AddCustomServices(this IServiceCollection services)
         {
             services.AddScoped<ICarsService, CarsService>();
+            services.AddScoped<IMakesService, MakesService>();
         }
         public static void AddValidators(this IServiceCollection services)
         {

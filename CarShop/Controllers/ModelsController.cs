@@ -7,25 +7,25 @@ namespace CarShop.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CarsController : ControllerBase
+    public class ModelsController : ControllerBase
     {
-        private readonly ICarsService carsService;
+        private readonly IModelsService modelsService;
 
-        public CarsController(ICarsService carsService)
+        public ModelsController(IModelsService modelsService)
         {
-            this.carsService = carsService;
+            this.modelsService = modelsService;
         }
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await carsService.GetAll());
+            return Ok(await modelsService.GetAll());
         }
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> Get([FromRoute] int id)
         {
-            var item = await carsService.GetById(id);
+            var item = await modelsService.GetById(id);
             if (item == null) return NotFound();
 
             return Ok(item);
@@ -33,8 +33,8 @@ namespace CarShop.Controllers
 
         [HttpGet("{orderBy:alpha}")]
         public async Task<IActionResult> GetOrder([FromRoute] string orderBy)
-        {   
-            if(orderBy.Split(' ').Length > 1)
+        {
+            if (orderBy.Split(' ').Length > 1)
             {
                 string[] orderByStr = orderBy.Split(' ');
                 orderBy = "";
@@ -43,28 +43,28 @@ namespace CarShop.Controllers
                     orderBy += orderByStr[i];
                 }
             }
-            var item = await carsService.Order(orderBy.ToLower());
+            var item = await modelsService.Order(orderBy.ToLower());
             if (item == null) return NotFound();
 
             return Ok(item);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create([FromBody] CarDto car)
+        public async Task<IActionResult> Create([FromBody] ModelDto model)
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            await carsService.Create(car);
+            await modelsService.Create(model);
 
             return Ok();
         }
 
         [HttpPut]
-        public async Task<IActionResult> Edit([FromBody] CarDto car)
+        public async Task<IActionResult> Edit([FromBody] ModelDto model)
         {
             if (!ModelState.IsValid) return BadRequest();
 
-            await carsService.Edit(car);
+            await modelsService.Edit(model);
 
             return Ok();
         }
@@ -72,7 +72,7 @@ namespace CarShop.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            await carsService.Delete(id);
+            await modelsService.Delete(id);
 
             return Ok();
         }
