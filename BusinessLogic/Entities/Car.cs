@@ -11,6 +11,6 @@
         public double SecondSpeed { get; set; }  // Скорость за 1 секунду
         public Make Make { get; set; }
         public Model Model { get; set; }
-        public Engine Engine { get; set; }
+        public TypeEngine Engine { get; set; }
     }
 }

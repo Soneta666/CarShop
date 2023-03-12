@@ -28,7 +28,7 @@ namespace Infrastructure.Data
         }
 
         public DbSet<Car> Cars { get; set; }
-        public DbSet<Engine> Engines { get; set; }
+        public DbSet<TypeEngine> Engines { get; set; }
         public DbSet<Make> Makes { get; set; }
         public DbSet<Model> Models { get; set; }
         public DbSet<TypeEngine> TypeEngines { get; set; }
