@@ -1,12 +1,18 @@
 using CarShop;
 using Core;
+using Core.Interfaces;
 using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
-string connStr = builder.Configuration.GetConnectionString("RemoteDb");
+//string connStr = builder.Configuration.GetConnectionString("RemoteDb");
+string connStr = builder.Configuration.GetConnectionString("LocalDb");
+
+// Add Custom Services
+//Scoped:
 
 // Add services to the container.
 builder.Services.AddControllers()

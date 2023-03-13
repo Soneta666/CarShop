@@ -18,7 +18,7 @@ namespace Infrastructure.Data
 
         public static void AddDbContext(this IServiceCollection services, string connStr)
         {
-            services.AddDbContext<ShopDbContext>(opt => opt.UseSqlServer(connStr));
+            services.AddDbContext<CarDbContext>(opt => opt.UseSqlServer(connStr));
         }
     }
 }

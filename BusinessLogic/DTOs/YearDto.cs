@@ -9,6 +9,6 @@ namespace Core.DTOs
     public class YearDto
     {
         public int Id { get; set; }
-        public DateTime Date { get; set; }
+        public string Date { get; set; }
     }
 }

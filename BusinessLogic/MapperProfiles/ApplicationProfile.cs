@@ -19,15 +19,11 @@ namespace Core.MapperProfiles
             CreateMap<Year, YearDto>().ReverseMap();
             CreateMap<YearDto, Year>().ReverseMap();
 
-            CreateMap<TypeEngine, TypeEngineDto>().ReverseMap();
-            CreateMap<TypeEngineDto, TypeEngine>().ReverseMap();
-
             CreateMap<Model, ModelDto>()
                 .ForMember(m => m.Year, opt => opt.MapFrom(m => m.Year));
             CreateMap<ModelDto, Model>().ReverseMap();
-            
-            CreateMap<Engine, EngineDto>()
-                .ForMember(e => e.TypeEngine, opt => opt.MapFrom(e => e.TypeEngine));
+
+            CreateMap<Engine, EngineDto>().ReverseMap();
             CreateMap<EngineDto, Engine>().ReverseMap();
 
             CreateMap<Car, CarDto>()

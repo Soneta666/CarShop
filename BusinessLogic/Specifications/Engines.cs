@@ -11,21 +11,12 @@ namespace Core.Specifications
 {
     public static class Engines
     {
-        public class GetAll : Specification<Engine>
-        {
-            public GetAll()
-            {
-                Query
-                    .Include(e => e.TypeEngine);
-            }
-        }
         public class OrderedByVolume : Specification<Engine>
         {
             public OrderedByVolume()
             {
                 Query
-                    .OrderBy(e => e.Volume)
-                    .Include(e => e.TypeEngine);
+                    .OrderBy(e => e.Volume);
             }
         }
         public class OrderedByHorsepower : Specification<Engine>
@@ -33,8 +24,7 @@ namespace Core.Specifications
             public OrderedByHorsepower()
             {
                 Query
-                    .OrderBy(e => e.Horsepower)
-                    .Include(e => e.TypeEngine);
+                    .OrderBy(e => e.Horsepower);
             }
         }
         public class ById : Specification<Engine>
@@ -42,8 +32,7 @@ namespace Core.Specifications
             public ById(int id)
             {
                 Query
-                    .Where(e => e.Id == id)
-                    .Include(e => e.TypeEngine);
+                    .Where(e => e.Id == id);
             }
         }
     }

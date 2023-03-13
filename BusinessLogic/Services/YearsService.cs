@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Core.DTOs;
+using Core.Entities;
 using Core.Helpers;
 using Core.Interfaces;
 using Core.Resources;
-using Itenso.TimePeriod;
 using System.Net;
 
 namespace Core.Services

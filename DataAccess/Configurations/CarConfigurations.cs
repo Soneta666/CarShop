@@ -19,6 +19,7 @@ namespace Infrastructure.Configurations
             builder.HasOne(c => c.Model).WithMany(m => m.Cars).HasForeignKey(c => c.ModelId);
             builder.HasOne(c => c.Engine).WithMany(e => e.Cars).HasForeignKey(c => c.EngineId);
             builder.HasOne(c => c.Make).WithMany(m => m.Cars).HasForeignKey(c => c.MakeId);
+            builder.HasOne(c => c.Year).WithMany(m => m.Cars).HasForeignKey(c => c.YearId);
         }
     }
 }
