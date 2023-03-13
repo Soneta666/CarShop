@@ -27,7 +27,7 @@ namespace Core.Service
         }
         public async Task<IEnumerable<EngineDto>> GetAll()
         {
-            var result = await enginesRepo.GetListBySpec(new Engines.GetAll());
+            var result = await enginesRepo.GetAll();
 
             return mapper.Map<IEnumerable<EngineDto>>(result);
         }
