@@ -4,6 +4,7 @@ using Core.Entities;
 using Core.Helpers;
 using Core.Interfaces;
 using Core.Resources;
+using Core.Specifications;
 using System.Net;
 
 namespace Core.Services
@@ -26,10 +27,15 @@ namespace Core.Services
             return (IEnumerable<YearDto>)mapper.Map<IEnumerable<Year>>(result);
         }
 
+        public async Task<IEnumerable<YearDto>> Order()
+        {
+            var result = await yearsRepo.GetListBySpec(new Years.OrderedByData());
+
+            return mapper.Map<IEnumerable<YearDto>>(result);
+        }
+
         public async Task<YearDto?> GetById(int id)
         {
-            //TypeEngine? item = await typesRepo.GetById(id);
-
             var item = await yearsRepo.GetById(id);
 
             if (item == null)
