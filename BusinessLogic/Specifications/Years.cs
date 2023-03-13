@@ -11,9 +11,9 @@ namespace Core.Specifications
 {
     public static class Years
     {
-        public class OrderedByHorsepower : Specification<Year>
+        public class OrderedByData : Specification<Year>
         {
-            public OrderedByHorsepower()
+            public OrderedByData()
             {
                 Query
                     .OrderBy(y => y.Date);
