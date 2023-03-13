@@ -123,14 +123,17 @@
   <data name="EngineNotFound" xml:space="preserve">
     <value>Engine with requested id not found!</value>
   </data>
+  <data name="InvalidCreds" xml:space="preserve">
+    <value>Invalid login or password!</value>
+  </data>
   <data name="MakeNotFound" xml:space="preserve">
     <value>Maker with requested id not found!</value>
   </data>
   <data name="ModelNotFound" xml:space="preserve">
     <value>Model with requested id not found!</value>
   </data>
-  <data name="TypeEngineNotFound" xml:space="preserve">
-    <value>TypeEngine with requested id not found!</value>
+  <data name="UserByIdNotFound" xml:space="preserve">
+    <value>User with requested id not found!</value>
   </data>
   <data name="YearNotFound" xml:space="preserve">
     <value>Year with requested id not found!</value>

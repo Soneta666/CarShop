@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Configurations
 {
-    internal class CarConfiguration : IEntityTypeConfiguration<Car>
+    internal class CarConfigurations : IEntityTypeConfiguration<Car>
     {
         public void Configure(EntityTypeBuilder<Car> builder)
         {

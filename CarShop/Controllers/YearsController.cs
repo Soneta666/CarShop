@@ -34,6 +34,15 @@ namespace CarShop.Controllers
             return Ok(item);
         }
 
+        [HttpGet("order")]
+        public async Task<IActionResult> GetOrder()
+        {
+            var item = await years.Order();
+            if (item == null) return NotFound();
+
+            return Ok(item);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] YearDto yearDto)
         {

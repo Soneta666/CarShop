@@ -10,6 +10,7 @@ namespace Core.Interfaces
     public interface IYearsService
     {
         Task<IEnumerable<YearDto>> GetAll();
+        Task<IEnumerable<YearDto>> Order();
         Task<YearDto?> GetById(int id);
         Task Create(YearDto years);
         Task Edit(YearDto years);

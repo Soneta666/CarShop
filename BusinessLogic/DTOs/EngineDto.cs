@@ -16,6 +16,5 @@ namespace Core.DTOs
         public uint? Cylinders { get; set; } // Число цилиндров
         public double Weight { get; set; } // Вес двигателя
         public uint FuelConsumption { get; set; } // Потребление 1 литра топлива на км
-        public TypeEngineDto? TypeEngine { get; set; }
     }
 }

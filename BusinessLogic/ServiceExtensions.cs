@@ -1,4 +1,5 @@
 ﻿using Core.Interfaces;
+using Core.Service;
 using Core.Services;
 using FluentValidation;
 using FluentValidation.AspNetCore;
@@ -23,6 +24,9 @@ namespace Core
             services.AddScoped<ICarsService, CarsService>();
             services.AddScoped<IMakesService, MakesService>();
             services.AddScoped<IModelsService, ModelsService>();
+            services.AddScoped<IMakesService, MakesService>();
+            services.AddScoped<IEnginesService, EnginesService>();
+            services.AddScoped<IAccountsService, AccountsService>();
         }
         public static void AddValidators(this IServiceCollection services)
         {
