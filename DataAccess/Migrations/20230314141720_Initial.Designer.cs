@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(CarDbContext))]
-    [Migration("20230314130713_emm")]
-    partial class emm
+    [Migration("20230314141720_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -329,16 +329,11 @@ namespace Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("IdYear")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("IdYear");
 
                     b.ToTable("Models");
 
@@ -347,175 +342,150 @@ namespace Infrastructure.Migrations
                         {
                             Id = 1,
                             Description = "The most common car type is the sedan. A sedan is a four-door car type with a traditional trunk. The difference between a hatchback and a sedan is that the rear luggage compartment door does not include the rear window and the door hinges are installed under the window.",
-                            IdYear = 0,
                             Name = "Sedan"
                         },
                         new
                         {
                             Id = 2,
                             Description = "A crossover is often confused with an SUV. A crossover often comes as two-wheel drive, but it can also come with 4-wheel drive. It is basically an off-road car chassis, but built more for city traffic.",
-                            IdYear = 0,
                             Name = "Crossover (CUV)"
                         },
                         new
                         {
                             Id = 3,
                             Description = "Another type that climbs this list of car types is the SUV, which is becoming more and more popular. The SUV is a large car that can often carry five to seven passengers with three rows of seats. They are basically the same as a crossover, except that they are built on a body-on-frame chassis. They often have 4wd and good terrain capability.",
-                            IdYear = 0,
                             Name = "Sport Utility Vehicles (SUVs)"
                         },
                         new
                         {
                             Id = 4,
                             Description = "A Hatchback car is basically a mix of a sedan and a station wagon. They often come as a 5-door set and have a hatch that opens upwards. Like the station wagon, a hatchback has door hinges above the rear window.",
-                            IdYear = 0,
                             Name = "Hatchback"
                         },
                         new
                         {
                             Id = 5,
                             Description = "A wagon is quite similar to a sedan, but with an extended roofline with a hatch door instead of a trunk. Station cars are often the perfect choice for families and long car journeys due to the larger cargo space than the sedan.",
-                            IdYear = 0,
                             Name = "Station Wagon"
                         },
                         new
                         {
                             Id = 6,
                             Description = "The coupe is a two-door car, very similar to the sedan but with two doors instead of four. Coupé cars often have a rear seat for two or three more passengers, but you often have to fold down one of the front seats to get there. Coupé cars are often quite more towards the sporty look.",
-                            IdYear = 0,
                             Name = "Coupe"
                         },
                         new
                         {
                             Id = 7,
                             Description = "Pickup trucks have become very common in recent years. A pickup has an enclosed cab with an open cargo area. They can either have space for two passengers or four. Pickup trucks have the cabin mounted on a separate steel frame, with one exception – Honda Ridgeline.",
-                            IdYear = 0,
                             Name = "Pickup Truck"
                         },
                         new
                         {
                             Id = 8,
                             Description = "The minivan or multi-purpose vehicle (MPV) is a van, but instead of cargo space, it has passenger seats. It often has 7 or 8 passenger seats, making it perfect for larger families or being used as a taxi.",
-                            IdYear = 0,
                             Name = "Minivan (MPV)"
                         },
                         new
                         {
                             Id = 9,
                             Description = "A roadster car is basically a convertible car, but with two doors, and it usually has no rear seat. They are therefore good for only two people. When it comes to size, they are often very small, with limited cargo space.",
-                            IdYear = 0,
                             Name = "Roadster"
                         },
                         new
                         {
                             Id = 10,
                             Description = "A Van is a two- or three-seater car model that is often used to transport goods. They often have a sealed cab from the cargo area, and they often have no windows to the cargo area, but some models have glass windows at the rear doors.",
-                            IdYear = 0,
                             Name = "Van"
                         },
                         new
                         {
                             Id = 11,
                             Description = "A sports car is anything that looks sporty to you, and it can be a roadster, coupe, or even a sedan. Sports cars are quite similar to the supercar, because a supercar can also be a sports car, but the difference is often that the sports car is a step below the supercar regarding performance and price.",
-                            IdYear = 0,
                             Name = "Sports Cars"
                         },
                         new
                         {
                             Id = 12,
                             Description = "The supercar is a high-performance car, usually with a very powerful and large engine. Most supercars are two-seater and at the same time very expensive – some are going for as high as one million dollars.",
-                            IdYear = 0,
                             Name = "Supercar"
                         },
                         new
                         {
                             Id = 13,
                             Description = "A luxury car is exactly what it sounds like – luxury. They are often very expensive, and have all the latest features for a comfortable ride. They often have a very powerful engine, but are not very fast in curves and on racetracks. This is because they often have so many features for comfort, so they are usually very heavy.",
-                            IdYear = 0,
                             Name = "Luxury Cars"
                         },
                         new
                         {
                             Id = 14,
                             Description = "The convertible or cabriolet car models come with a retractable roof. They are the perfect choice for a hot summer day when you are going on holiday to the beach. Most convertible cars have an automatic system to retrace the fabric rooftop, but on some older models, you had to do this manually. Some models even have a retractable hardtop, which makes them look like normal cars when the rooftop is closed.",
-                            IdYear = 0,
                             Name = "Cabriolet"
                         },
                         new
                         {
                             Id = 15,
                             Description = "Muscle cars are cars with large muscles under the hood. Muscle cars are often older American cars with very large and powerful v8 or v10 engines, but muscle cars are also available as modern cars. Muscle cars are usually not that fast on racetracks around corners, but when they drive in a straight line, like drag racing, not many other cars can beat them.",
-                            IdYear = 0,
                             Name = "Muscle Cars"
                         },
                         new
                         {
                             Id = 16,
                             Description = "The microcar or minicar is a small car that often comes with an engine size of less than a liter. They are available in various unusual designs and are ideal for city traffic due to their fuel efficiency and easy parking.",
-                            IdYear = 0,
                             Name = "Micro"
                         },
                         new
                         {
                             Id = 17,
                             Description = "A camper van is often a truck chassis that has been rebuilt for camping, and they often have a kitchen, toilet, and other necessary accessories for a perfect camping trip. For example, a motorhome can also refer to a minivan that has been rebuilt for camping, such as a Volkswagen transporter.",
-                            IdYear = 0,
                             Name = "Camper Van"
                         },
                         new
                         {
                             Id = 18,
                             Description = "A mini truck is exactly what it sounds like – a small truck, and it’s a mix of a pickup and a truck. They often have two or three seats and open cargo space but can also come with closed cargo space.",
-                            IdYear = 0,
                             Name = "Mini Truck"
                         },
                         new
                         {
                             Id = 19,
                             Description = "A limousine is a stretched car that is often used by celebrities and pop stars. It has an elongated base and can be rebuilt from different car models.",
-                            IdYear = 0,
                             Name = "Limousine"
                         },
                         new
                         {
                             Id = 20,
                             Description = "In the last place on the list, you will find the truck. Although they are not really a car type, they can come in many forms and are still a vehicle type, so we wanted to include it.",
-                            IdYear = 0,
                             Name = "Truck"
                         },
                         new
                         {
                             Id = 21,
                             Description = "A hot hatch car is very similar to a hatchback car, which we talked about earlier in the article. However, a hot hatch is a hatchback that has been modified to improve performance and is generally a little more “sporty”.",
-                            IdYear = 0,
                             Name = "Hot Hatch"
                         },
                         new
                         {
                             Id = 22,
                             Description = "A grand tourer is typically a high-performance luxury car designed for long-distance driving. The term “grand tourer” or just “GT” is sometimes used to describe just a high-performance sports car, but the typical grand tourer is larger and more comfortable than a sports car.",
-                            IdYear = 0,
                             Name = "Grand Tourer"
                         },
                         new
                         {
                             Id = 23,
                             Description = "Utes are popular in Australia and New Zealand, where they are often used as work vehicles. Ute is short for “coupé utility” or “utility”. Ute is a regular car that has been modified with a cargo bed in the back, instead of passenger seats. This makes it perfect for carrying large objects, such as timber or building materials.",
-                            IdYear = 0,
                             Name = "Ute"
                         },
                         new
                         {
                             Id = 24,
                             Description = "A military vehicle is exactly what it sounds like: a vehicle that is designed for or has been adapted to be used by the military. This includes tanks, armored personnel carriers, artillery, and other types of vehicles used by the military.",
-                            IdYear = 0,
                             Name = "Military Vehicle"
                         },
                         new
                         {
                             Id = 25,
                             Description = "A dragster is built to compete in drag racing. A typical drag race is a race in a straight line from one end of a track to another, and the goal is to reach the finish line first. To achieve this, dragsters rely on their incredible speed and acceleration, which is why some dragster cars have over 8,000 horsepower.",
-                            IdYear = 0,
                             Name = "Dragster"
                         });
                 });
@@ -909,17 +879,6 @@ namespace Infrastructure.Migrations
                     b.Navigation("Year");
                 });
 
-            modelBuilder.Entity("Core.Entities.Model", b =>
-                {
-                    b.HasOne("Core.Entities.Year", "Year")
-                        .WithMany("Models")
-                        .HasForeignKey("IdYear")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Year");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -989,8 +948,6 @@ namespace Infrastructure.Migrations
             modelBuilder.Entity("Core.Entities.Year", b =>
                 {
                     b.Navigation("Cars");
-
-                    b.Navigation("Models");
                 });
 #pragma warning restore 612, 618
         }

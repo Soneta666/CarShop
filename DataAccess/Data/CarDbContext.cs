@@ -31,14 +31,13 @@ namespace Infrastructure.Data
             //DbContextExtensions.SeedCars(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new CarConfigurations());
-            modelBuilder.ApplyConfiguration(new ModelConfigurations());
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-            string connStr = "workstation id=CarsShop.mssql.somee.com;packet size=4096;user id=Soneta_SQLLogin_2;pwd=yrmu5abt4d;data source=CarsShop.mssql.somee.com;persist security info=False;initial catalog=CarsShop";
+            string connStr = "workstation id=CarsShop.mssql.somee.com;packet size=4096;user id=Soneta_SQLLogin_3;pwd=lxkq3lgzto;data source=CarsShop.mssql.somee.com;persist security info=False;initial catalog=CarsShop";
             optionsBuilder.UseSqlServer(connStr);
         }
 

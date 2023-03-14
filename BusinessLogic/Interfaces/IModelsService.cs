@@ -10,7 +10,7 @@ namespace Core.Interfaces
     public interface IModelsService
     {
         Task<IEnumerable<ModelDto>> GetAll();
-        Task<IEnumerable<ModelDto>> Order(string order);
+        Task<IEnumerable<ModelDto>> Order();
         Task<ModelDto?> GetById(int id);
         Task Create(ModelDto model);
         Task Edit(ModelDto model);

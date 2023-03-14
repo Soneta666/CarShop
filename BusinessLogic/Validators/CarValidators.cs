@@ -8,15 +8,11 @@ using System.Threading.Tasks;
 
 namespace Core.Validators
 {
-    public class ModelValidators : AbstractValidator<ModelDto>
+    public class CarValidators : AbstractValidator<CarDto>
     {
-        public ModelValidators()
+        public CarValidators()
         {
-            RuleFor(m => m.Name)
-                .NotEmpty()
-                .NotNull()
-                .MinimumLength(2);
-            RuleFor(m => m.Description)
+            RuleFor(c => c.Name)
                 .NotEmpty()
                 .NotNull()
                 .MinimumLength(2);
