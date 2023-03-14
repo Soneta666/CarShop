@@ -10,7 +10,7 @@ namespace Infrastructure.Data
         {
             modelBuilder.Entity<Car>().HasData(new[]
             {
-                new Car()
+                new Car() 
                 {
                     Id = 1,
                     Name = "Audi Q5",
