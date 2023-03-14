@@ -63,11 +63,11 @@ namespace Core.Specifications
             public OrderedByYear()
             {
                 Query
+                    .Include(c => c.Year)
+                    .OrderBy(c => c.Year.Date)
                     .Include(c => c.Make)
-                    .OrderBy(c => c.Make.Country)
                     .Include(c => c.Model)
-                    .Include(c => c.Engine)
-                    .Include(c => c.Year);
+                    .Include(c => c.Engine);
             }
         }
         public class OrderedByMaxSpeed : Specification<Car>

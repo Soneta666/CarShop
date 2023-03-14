@@ -27,18 +27,14 @@ namespace Core.Services
         }
         public async Task<IEnumerable<ModelDto>> GetAll()
         {
-            var result = await modelsRepo.GetListBySpec(new Models.GetAll());
+            var result = await modelsRepo.GetAll();
 
             return mapper.Map<IEnumerable<ModelDto>>(result);
         }
 
-        public async Task<IEnumerable<ModelDto>> Order(string order)
+        public async Task<IEnumerable<ModelDto>> Order()
         {
-            IEnumerable<Model> result;
-            if(order == "orderbyyear" || order == "byyear" || order == "year")
-                result = await modelsRepo.GetListBySpec(new Models.OrderedByYear());
-            else
-                result = await modelsRepo.GetListBySpec(new Models.OrderedByName());
+            var result = await modelsRepo.GetListBySpec(new Models.OrderedByName());
 
             return mapper.Map<IEnumerable<ModelDto>>(result);
         }

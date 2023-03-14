@@ -31,19 +31,10 @@ namespace CarShop.Controllers
             return Ok(item);
         }
 
-        [HttpGet("{orderBy:alpha}")]
-        public async Task<IActionResult> GetOrder([FromRoute] string orderBy)
+        [HttpGet("order")]
+        public async Task<IActionResult> GetOrder()
         {
-            if (orderBy.Split(' ').Length > 1)
-            {
-                string[] orderByStr = orderBy.Split(' ');
-                orderBy = "";
-                for (int i = 0; i < orderByStr.Length; i++)
-                {
-                    orderBy += orderByStr[i];
-                }
-            }
-            var item = await modelsService.Order(orderBy.ToLower());
+            var item = await modelsService.Order();
             if (item == null) return NotFound();
 
             return Ok(item);

@@ -24,7 +24,7 @@ namespace Core.Services
         {
             var result = await yearsRepo.GetAll();
 
-            return (IEnumerable<YearDto>)mapper.Map<IEnumerable<Year>>(result);
+            return mapper.Map<IEnumerable<YearDto>>(result);
         }
 
         public async Task<IEnumerable<YearDto>> Order()
