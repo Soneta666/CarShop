@@ -10,6 +10,9 @@ namespace Core.DTOs
     public class CarDto
     {
         public uint Id { get; set; }
+        public string Name { get; set; }
+        public int YearId { get; set; }
+        public double Price { get; set; }
         public uint MakeId { get; set; }          // Производитель (Make)
         public uint ModelId { get; set; }         // Модель (Model)
         public uint EngineId { get; set; }        // Мотор (Engine)
@@ -19,5 +22,6 @@ namespace Core.DTOs
         public MakeDto? Make { get; set; }
         public ModelDto? Model { get; set; }
         public EngineDto? Engine { get; set; }
+        public YearDto? Year { get; set; }
     }
 }

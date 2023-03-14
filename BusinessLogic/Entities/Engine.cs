@@ -3,7 +3,7 @@
     public class Engine
     {
         public int Id { get; set; }
-        public int TypeEngineId { get; set; } // тип мотора (TypeEngine)
+        public string TypeEngine { get; set; } //Type of engine
         public double Horsepower { get; set; } // мощность мотора в лошадиных силах
         public double Volume { get; set; } // объем двигателя
         public int? Cylinders { get; set; } // Число цилиндров

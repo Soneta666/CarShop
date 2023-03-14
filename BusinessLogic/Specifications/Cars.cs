@@ -18,7 +18,8 @@ namespace Core.Specifications
                 Query
                     .Include(c => c.Model)
                     .Include(c => c.Model)
-                    .Include(c => c.Engine);
+                    .Include(c => c.Engine)
+                    .Include(c => c.Year);
             }
         }
         public class OrderedByModelName : Specification<Car>
@@ -29,7 +30,8 @@ namespace Core.Specifications
                     .Include(c => c.Model)
                     .OrderBy(c => c.Model.Name)
                     .Include(c => c.Model)
-                    .Include(c => c.Engine);
+                    .Include(c => c.Engine)
+                    .Include(c => c.Year);
             }
         }
         public class OrderedByMakeName : Specification<Car>
@@ -40,7 +42,8 @@ namespace Core.Specifications
                     .Include(c => c.Make)
                     .OrderBy(c => c.Make.Name)
                     .Include(c => c.Model)
-                    .Include(c => c.Engine);
+                    .Include(c => c.Engine)
+                    .Include(c => c.Year);
             }
         }
         public class OrderedByCountry : Specification<Car>
@@ -51,7 +54,8 @@ namespace Core.Specifications
                     .Include(c => c.Make)
                     .OrderBy(c => c.Make.Country)
                     .Include(c => c.Model)
-                    .Include(c => c.Engine);
+                    .Include(c => c.Engine)
+                    .Include(c => c.Year);
             }
         }
         public class OrderedByYear : Specification<Car>
@@ -62,7 +66,8 @@ namespace Core.Specifications
                     .Include(c => c.Make)
                     .OrderBy(c => c.Make.Country)
                     .Include(c => c.Model)
-                    .Include(c => c.Engine);
+                    .Include(c => c.Engine)
+                    .Include(c => c.Year);
             }
         }
         public class OrderedByMaxSpeed : Specification<Car>
@@ -73,7 +78,8 @@ namespace Core.Specifications
                     .OrderBy(c => c.MaxSpeed)
                     .Include(c => c.Make)
                     .Include(c => c.Model)
-                    .Include(c => c.Engine);
+                    .Include(c => c.Engine)
+                    .Include(c => c.Year);
             }
         }
         public class ById : Specification<Car>
@@ -84,7 +90,8 @@ namespace Core.Specifications
                     .Where(c => c.Id == id)
                     .Include(c => c.Make)
                     .Include(c => c.Model)
-                    .Include(c => c.Engine);
+                    .Include(c => c.Engine)
+                    .Include(c => c.Year);
             }
         }
     }

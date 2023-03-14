@@ -1,4 +1,5 @@
 ﻿using Core.Entities;
+using Infrastructure.Configurations;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -11,14 +12,26 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Data
 {
-    internal class ShopDbContext : IdentityDbContext<User>
+    internal class CarDbContext : IdentityDbContext<User>
     {
-        public ShopDbContext() : base() { }
-        public ShopDbContext(DbContextOptions options) : base(options) { }
+        public CarDbContext() : base() { }
+        public CarDbContext(DbContextOptions options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.SeedYears();
+            modelBuilder.SeedModels();
+            modelBuilder.SeedMakes();
+            modelBuilder.SeedEngines();
+            modelBuilder.SeedCars();
+            //
+
+            //DbContextExtensions.SeedCars(modelBuilder);
+
+            modelBuilder.ApplyConfiguration(new CarConfigurations());
+            modelBuilder.ApplyConfiguration(new ModelConfigurations());
 
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         }
