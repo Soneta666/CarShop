@@ -11,7 +11,7 @@ namespace Infrastructure.Data
             modelBuilder.Entity<Car>().HasData(new[]
             {
                 new Car() 
-                {
+                { 
                     Id = 1,
                     Name = "Audi Q5",
                     YearId = 2,
