@@ -8,10 +8,10 @@ namespace Infrastructure
 {
     internal class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        internal ShopDbContext context;
+        internal CarDbContext context;
         internal DbSet<TEntity> dbSet;
 
-        public Repository(ShopDbContext context)
+        public Repository(CarDbContext context)
         {
             this.context = context;
             this.dbSet = context.Set<TEntity>();

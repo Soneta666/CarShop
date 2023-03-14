@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Infrastructure.Migrations
 {
-    [DbContext(typeof(ShopDbContext))]
+    [DbContext(typeof(CarDbContext))]
     [Migration("20230313171107_AddIdentityUser")]
     partial class AddIdentityUser
     {

@@ -17,7 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext(connStr);
-builder.Services.AddIdentity();
+//builder.Services.AddIdentity();
 
 builder.Services.AddRepository();
 builder.Services.AddCustomServices();
